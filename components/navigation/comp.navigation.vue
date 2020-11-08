@@ -1,40 +1,26 @@
 <template>
-  <v-app dark>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
-      <v-list>
-        <v-list-item
-          v-for="(item, i) in items"
-          :key="i"
-          :to="item.to"
-          router
-          exact
-        >
-          <v-list-item-action>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-action>
-          <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-  </v-app>
+  <v-toolbar app>
+    <v-toolbar-title>{{ siteTitle }}</v-toolbar-title>
+    <v-spacer />
+    <v-toolbar-item>
+      <v-btn
+        v-for="item in menuItems"
+        :key="item.title"
+        flat
+        :to="item.to"
+        v-text="item.title"
+      />
+    </v-toolbar-item>
+  </v-toolbar>
 </template>
 
 <script>
 export default {
   data () {
     return {
-      clipped: false,
-      drawer: false,
-      fixed: false,
-      items: [
+      siteTitle: 'De Mortem Et Diabolum',
+      sidebar: false,
+      menuItems: [
         {
           icon: 'mdi-apps',
           title: 'Welcome',
@@ -42,12 +28,15 @@ export default {
         },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          title: 'Bands',
+          to: '/bands'
+        },
+        {
+          icon: 'mdi-chart-bubble',
+          title: 'News',
+          to: '/news'
         }
-      ],
-      miniVariant: false,
-      title: 'Vuetify.js'
+      ]
     }
   }
 }
