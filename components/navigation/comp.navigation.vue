@@ -1,16 +1,18 @@
 <template>
-  <v-toolbar app>
-    <v-toolbar-title>{{ siteTitle }}</v-toolbar-title>
+  <v-toolbar app tile>
     <v-spacer />
     <v-toolbar-item>
       <v-btn
         v-for="item in menuItems"
         :key="item.title"
-        flat
+        exact
         :to="item.to"
+        text
+        :x-large="false ? item.type : 'x-large'"
         v-text="item.title"
       />
     </v-toolbar-item>
+    <v-spacer />
   </v-toolbar>
 </template>
 
@@ -18,23 +20,24 @@
 export default {
   data () {
     return {
-      siteTitle: 'De Mortem Et Diabolum',
-      sidebar: false,
       menuItems: [
         {
-          icon: 'mdi-apps',
-          title: 'Welcome',
-          to: '/'
+          icon: 'mdi-chart-bubble',
+          title: 'De Mortem Et Diabolum',
+          to: '/',
+          type: 'x-large'
         },
         {
           icon: 'mdi-chart-bubble',
           title: 'Bands',
-          to: '/bands'
+          to: '/bands',
+          type: 'small'
         },
         {
           icon: 'mdi-chart-bubble',
           title: 'News',
-          to: '/news'
+          to: '/news',
+          type: 'small'
         }
       ]
     }
